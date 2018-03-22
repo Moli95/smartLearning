@@ -6,7 +6,7 @@ var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 
 //connect to MongoDB
-mongoose.connect('mongodb://localhost/testForAuth');
+mongoose.connect('mongodb://localhost/testForAuth', { useMongoClient: true });
 var db = mongoose.connection;
 
 //handle mongo error
@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 
 // serve static files from template
-app.use(express.static(__dirname + '/templateLogReg'));
+app.use(express.static(__dirname + '/public/'));
 
 // include routes
 var routes = require('./routes/router');

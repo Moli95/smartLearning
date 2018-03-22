@@ -2,10 +2,14 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
 
-
+console.log("aaaa");
 // GET route for reading data
 router.get('/', function (req, res, next) {
-  return res.sendFile(path.join(__dirname + '/templateLogReg/index.html'));
+  return res.sendFile('index.html', { root: __dirname + '/../public/'});
+});
+
+router.get('/login', function (req, res) {
+  return res.sendFile('login.html', { root: __dirname + '/../public/'});
 });
 
 
