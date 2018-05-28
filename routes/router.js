@@ -1,8 +1,50 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
+var Questions = require('questions');
+// var express = require('express');
+// var router = express.Router();
 
+// console.log("bbb");
+// // GET route for reading data
+// router.get('/api/', function (req, res, next) {
+//   return "bbb";
+// });
 console.log("aaaa");
+
+
+// router.get('/api/randomquestion', function (req, res) {
+//   Questions.find({}).then(function(questions){
+//     var rnd = Math.floor(Math.random() * questions.length) + 0;
+//     res.send(questions[rnd]);
+//   });
+// });
+
+
+//POST route for updating questions
+router.post('/addquestion', function (req, res, next) {
+  if (req.body.questionID &&
+    req.body.questionText &&
+    req.body.answears) {
+
+    var questionData = {
+      questionID: req.body.questionID,
+      questionText: req.body.questionText,
+      answears: req.body.answears,
+    }
+
+    Questions.create(questionData, function (error, user) {
+      if (error) {
+        return next(error);
+      } else {
+        return res.redirect('/YEAH');
+      }
+    });
+
+  }
+});
+
+
 // GET route for reading data
 router.get('/', function (req, res, next) {
   return res.sendFile('index.html', { root: __dirname + '/../public/'});
@@ -10,6 +52,10 @@ router.get('/', function (req, res, next) {
 
 router.get('/login', function (req, res) {
   return res.sendFile('login.html', { root: __dirname + '/../public/'});
+});
+
+router.get('/cards', function (req, res) {
+  return res.sendFile('cards.html', { root: __dirname + '/../public/'});
 });
 
 

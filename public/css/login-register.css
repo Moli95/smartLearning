@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+
 .signin-form input {
 	display: block;
 	padding: 5px;
@@ -7,6 +10,20 @@
 
 h1 {
 	text-align: center;
+	font-family: 'Raleway', sans-serif;
+	font-size: 60px;
+}
+
+header {
+	padding: 100px 16px 64px 16px;
+	background: #f44336;
+	color: #fff;
+	text-align: center;
+}
+
+header p {
+	font-size: 30px;
+	font-family: 'Raleway', sans-serif;
 }
 
 .signin-form button {
@@ -48,4 +65,197 @@ h1 {
 .signin-form button:hover span:after {
   opacity: 1;
   right: 0;
+}
+
+.jumbotron {
+  background: #fff;
+}
+
+
+/*
+
+CARDS
+
+*/
+
+.single-card {
+	background: #fff;
+	box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+	padding: 40px;
+	text-align: right;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.single-card img {
+	max-width:100%;
+	max-height: 100%;
+}
+
+.single-card h3 {
+	text-align: left;
+}
+
+.single-card p {
+	text-align: left;
+}
+
+.single-card .read-more {
+	background: #f44336;
+	border: #f44336;
+	text-align: center;
+	display: inline-block;
+	float: right;
+}
+
+.search-button {
+	background: #f44336;
+	border: #f44336;
+	text-align: center;
+	display: inline-block;
+	float: right;
+}
+
+.search-button:hover {
+	background: #FF2919;
+}
+
+.single-card .read-more:hover {
+	background: #FF2919;
+}
+
+.cards-filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*height: 50px;*/
+}
+
+.cards-filter input, .cards-filter button{
+	margin: 0 5px;
+}
+
+.cards-filter-bg {
+	background-color: #f8f8f8;
+    border-color: #e7e7e7;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.cards-filter-bg p {
+	text-align: center;
+	font-size: 14px;
+}
+
+.single-card .tags-container a {
+	display: inline-block;
+	float: left;
+	padding: 10px 20px;
+	background: #dcdcdc;
+	color: black;
+	border-radius: 10px;
+	margin-right: 15px;
+	margin-top: 5px;
+	text-align: center;
+	font-size: 11px;
+}
+
+.single-card .tags-container a:hover {
+	background: #fd594d;
+	color: white;
+	text-decoration: none;
+
+}
+
+.bottom-of-card {
+	display: flex;
+	align-items: center;
+}
+
+.cards-bottom-pagination {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 30px;
+}
+
+.cards-bottom-pagination a {
+	display: inline-block;
+	float: left;
+	padding: 20px;
+	background: #fff;
+	color: black;
+	border-radius: 10px;
+	margin-right: 15px;
+	margin-top: 5px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 11px;
+}
+
+.cards-bottom-pagination a.active {
+	background: #f44336;
+	color: white;
+	text-decoration: none;
+}
+
+.cards-bottom-pagination a:hover {
+	background: #f44336;
+	color: white;
+	text-decoration: none;
+}
+
+.card-test {
+	margin-top: 80px;
+	margin-bottom: 100px;
+	text-align: center;
+	padding: 0;
+}
+
+.card-test .question {
+	background: #f44336;
+	color: white;
+	text-align: center;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+.card-test .question h3 {
+	text-align: center;
+}
+
+.card-test .answears {
+	padding: 0 0 0 0;
+	background: white;
+}
+
+.card-test .answears .answear {
+	display: inline-block;
+	width: 100%;
+	background: #dcdcdc;
+	color: black;
+	text-align: center;
+	padding: 20px;
+	text-decoration: none;
+	height: auto;
+	cursor: pointer;
+}
+
+.card-test .answears .answear:hover {
+	background: #fd594d;
+	color: white;
+}
+
+#myProgress {
+    width: 100%;
+    background-color: grey;
+}
+#myBar {
+    width: 100%;
+    height: 30px;
+    background-color: #37BC61;
+}
+
+.time-left {
+	padding: 20px;
 }

@@ -6,6 +6,7 @@ var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 
 //connect to MongoDB
+mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/testForAuth', { useMongoClient: true });
 var db = mongoose.connection;
 
@@ -36,6 +37,10 @@ app.use(express.static(__dirname + '/public/'));
 // include routes
 var routes = require('./routes/router');
 app.use('/', routes);
+
+// include api
+// var api = require('./api/questions');
+// app.use('/api/', api);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
