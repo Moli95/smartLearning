@@ -22,6 +22,7 @@ console.log("aaaa");
 
 // include routes
 var api = require('./questions');
+var api2 = require('./articles');
 //app.use('/', api);
 
 
@@ -144,5 +145,5 @@ router.get('/logout', function (req, res, next) {
   }
 });
 
+//module.exports.router = router;
 module.exports = router;
-module.exports = api;

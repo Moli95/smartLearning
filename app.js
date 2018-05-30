@@ -28,7 +28,7 @@ app.use(session({
 
 // parse incoming requests
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+//app.use(bodyParser.urlencoded({ extended: false }));
 
 
 // serve static files from template

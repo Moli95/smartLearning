@@ -18,13 +18,14 @@ var questionsSchema = new mongoose.Schema({
   	unique: false,
   	required: true,
   	trim: true
-  },
-  answears: [
-		{
-			"answear": String,
-			"isTrue": Boolean
-		}
-    ]
+  }
+  //,
+  // answears: [
+	// 	{
+	// 		"answear": String,
+	// 		"isTrue": Boolean
+	// 	}
+  //   ]
 });
 
 
