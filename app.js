@@ -38,6 +38,7 @@ app.use(express.static(__dirname + '/public/'));
 var routes = require('./routes/router');
 app.use('/', routes);
 
+
 // include api
 // var api = require('./api/questions');
 // app.use('/api/', api);

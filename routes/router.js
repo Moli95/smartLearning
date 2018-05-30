@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
-var Questions = require('questions');
+var Questions = require('../models/questions');
 // var express = require('express');
 // var router = express.Router();
 
@@ -19,6 +19,10 @@ console.log("aaaa");
 //     res.send(questions[rnd]);
 //   });
 // });
+
+// include routes
+var api = require('./questions');
+//app.use('/', api);
 
 
 //POST route for updating questions
@@ -141,3 +145,4 @@ router.get('/logout', function (req, res, next) {
 });
 
 module.exports = router;
+module.exports = api;
