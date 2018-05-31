@@ -41,6 +41,7 @@ app.use('/', routes);
 
 // include api
 // var api = require('./api/questions');
+// coen
 // app.use('/api/', api);
 
 // catch 404 and forward to error handler
