@@ -13,7 +13,7 @@ router.get('/api/randomarticle', function (req, res) {
     query[name] = value;
   }
   Article.find(query).then(function(articles){
-    if(res.send(req.query.category))
+    // if(res.send(req.query.category))
     var rnd = Math.floor(Math.random() * articles.length) + 0;
     if(articles.length == 0) {
       res.send("No articles available!");
@@ -22,11 +22,20 @@ router.get('/api/randomarticle', function (req, res) {
   });
 });
 
-// GET route for random article from selected category
-// router.get('/api/randomarticle', function (req, res) {
-//
-// });
+// GET route to get all articles
+router.get('/api/allarticles', function (req,res) {
+  Article.find({}).then(function(articles) {
+    res.send(articles);
+  });
+});
 
+
+// POST route for adding article
+router.post('/api/addarticle', function (req, res) {
+  var article = new Article(req.body);
+  article.save();
+  res.send(req.body);
+});
 
 
 

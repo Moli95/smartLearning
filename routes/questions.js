@@ -25,6 +25,8 @@ router.get('/api/randomquestion', function (req, res) {
   });
 });
 
+
+// POST request to add question to database
 router.post('/api/addquestion', function (req, res) {
   // long version
   var question = new Questions(req.body);
@@ -32,11 +34,19 @@ router.post('/api/addquestion', function (req, res) {
   // question.create(req.body).then(function(question) {
   //   res.send(question);
   // });
-
-
-
   res.send(req.body);
 });
+
+
+// POST question to submit result of answerar in QUIZ
+
+router.post('/api/submitanswear', function(req, res) {
+	
+});
+
+
+
+
 
 
 
