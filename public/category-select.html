@@ -9,7 +9,7 @@
     <link rel="icon" href="../../favicon.ico">
     <title>Smart Learning</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-        <link href="/css/login-register.css" rel="stylesheet">
+    <link href="/css/category-select.css" rel="stylesheet">
 
   </head>
   <body style="background: #dcdcdc;">
@@ -38,71 +38,36 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-<!--     <header style="">
-      <h1 style="">Question</h1>
-      <p>Category: Name of category from API :)</p>
-    </header> -->
-<!--     <div class="cards-filter-bg">
-      <div class="container">
-                <p>Are you looking for accurate cards? Use our search system bellow! :)</p>
-    <div class="cards-filter">
-        <input type="text" class="form-control" placeholder="Inteligetny input jak bedzie mis ei chcialo">
-        <select class="form-control">
-          <option>dsfosdk</option>
-          <option>dasoid</option>
-        </select>
-        <button class="btn btn-primary search-button">Search &raquo;</button>
-    </div>
-  </div>
-    </div> -->
+    <header style="">
+      <h1 style="">Train</h1>
+      <p>Chose category and improve!</p>
+    </header>
     <div class="container">
       
       <!-- Main component for a primary marketing message or call to action -->
-      <div class="single-card card-test">
-        <div class="question">
-          <h3>
-            Quetion here
-          </h3>
-        </div>
-        <div class="answears">
-          <div class="answear">
-            A answear
-          </div>
-          <div class="answear">
-            B answear
-          </div>
-          <div class="answear">
-            C answear
-          </div>
-          <div class="answear">
-            D answear
-          </div>
-        </div>
-        <div class="time-left">
-          <div id="myProgress">
-            <div id="myBar">
-            </div>
-          </div>
-        </div>
+      <div class="single-category">
+        <h3>
+          Title of category
+        </h3>
+        <p>
+          Description of category. Description of category. Description of category. Description of category. Description of category. Description of category. Description of category.Description of category. Description of category. Description of category.Description of category. Description of category. Description of category. Description of category.
+        </p>
+        <div class="bottom-of-category">
+        <a class="btn btn-lg btn-primary start" href="/train?category=history" role="button">Start &raquo;</a>
+      </div>
+      </div>
+      <div class="single-category">
+        <h3>
+          Title of category
+        </h3>
+        <p>
+          Description of category. Description of category. Description of category. Description of category. Description of category. Description of category. Description of category.Description of category. Description of category. Description of category.Description of category. Description of category. Description of category. Description of category.
+        </p>
+        <div class="bottom-of-category">
+        <a class="btn btn-lg btn-primary start" href="../../components/#navbar" role="button">Start &raquo;</a>
+      </div>
       </div>
     </div> <!-- /container -->
-
-
-    <script>
-function move() {
-    var elem = document.getElementById("myBar"); 
-    var width = 100;
-    var id = setInterval(frame, 100);
-    function frame() {
-        if (width <= 0) {
-            clearInterval(id);
-        } else {
-            width--; 
-            elem.style.width = width + '%'; 
-        }
-    }
-}
-    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </body>

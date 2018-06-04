@@ -207,7 +207,7 @@ CARDS
 
 .card-test {
 	margin-top: 80px;
-	margin-bottom: 100px;
+	margin-bottom: 20px;
 	text-align: center;
 	padding: 0;
 }
@@ -242,7 +242,7 @@ CARDS
 }
 
 .card-test .answears .answear:hover {
-	background: #fd594d;
+	background: #ababab;
 	color: white;
 }
 
@@ -258,4 +258,32 @@ CARDS
 
 .time-left {
 	padding: 20px;
+}
+
+#functional-buttons {
+	background: white;
+	text-align: center;
+	display: inline-block;
+	width: 100%;
+	padding: 20px;
+}
+
+#functional-buttons div {
+	display: inline-block;
+}
+
+#functional-buttons button {
+	background: #f44336;
+	border: #f44336;
+	text-align: center;
+	display: inline-block;
+	padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+    color: white;
+}
+
+#functional-buttons button:hover {
+	background: #FF2919;
 }

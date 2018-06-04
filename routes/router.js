@@ -56,6 +56,14 @@ router.get('/', function (req, res, next) {
   return res.sendFile('index.html', { root: __dirname + '/../public/'});
 });
 
+router.get('/train-category-select', function (req, res, next) {
+  return res.sendFile('category-select.html', { root: __dirname + '/../public/'});
+});
+
+router.get('/train', function (req, res, next) {
+  return res.sendFile('question.html', { root: __dirname + '/../public/'});
+});
+
 router.get('/login', function (req, res) {
   return res.sendFile('login.html', { root: __dirname + '/../public/'});
 });
@@ -118,6 +126,8 @@ router.post('/', function (req, res, next) {
 router.get('/profile', function (req, res, next) {
   User.findById(req.session.userId)
     .exec(function (error, user) {
+      console.log(req.session.userId);
+      console.log(req.session);
       if (error) {
         return next(error);
       } else {
@@ -135,6 +145,7 @@ router.get('/profile', function (req, res, next) {
 // GET for logout logout
 router.get('/logout', function (req, res, next) {
   if (req.session) {
+    console.log(req.session);
     // delete session object
     req.session.destroy(function (err) {
       if (err) {

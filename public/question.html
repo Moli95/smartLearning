@@ -12,7 +12,7 @@
         <link href="/css/login-register.css" rel="stylesheet">
 
   </head>
-  <body style="background: #f1f1f1;">
+  <body style="background: #dcdcdc;">
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -27,7 +27,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="/train-category-select">Train</a></li>
+            <li><a href="#about">Courses</a></li>
              <li><a href="#contact">Battle</a></li>
              <li><a href="#contact">Ranking</a></li>
           </ul>
@@ -38,23 +38,70 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-    <header style="">
-      <h1 style="">Productive Student</h1>
-      <p>Learn Smart!</p>
-    </header>
+<!--     <header style="">
+      <h1 style="">Question</h1>
+      <p>Category: Name of category from API :)</p>
+    </header> -->
+<!--     <div class="cards-filter-bg">
+      <div class="container">
+                <p>Are you looking for accurate cards? Use our search system bellow! :)</p>
+    <div class="cards-filter">
+        <input type="text" class="form-control" placeholder="Inteligetny input jak bedzie mis ei chcialo">
+        <select class="form-control">
+          <option>dsfosdk</option>
+          <option>dasoid</option>
+        </select>
+        <button class="btn btn-primary search-button">Search &raquo;</button>
+    </div>
+  </div>
+    </div> -->
     <div class="container">
-
+      
       <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron" style="background: #fff; box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);">
-
-        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-        <p>To see the difference between static and fixed top navbars, just scroll.</p>
-        <p>
-          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
-        </p>
+      <div class="single-card card-test">
+        <div class="question">
+          <h3 id="question-text">
+            Quetion here
+          </h3>
+        </div>
+        <div class="answears">
+          <div class="answear">
+            A answear
+          </div>
+          <div class="answear">
+            B answear
+          </div>
+          <div class="answear">
+            C answear
+          </div>
+          <div class="answear">
+            D answear
+          </div>
+        </div>
+        <div class="time-left">
+          <div id="myProgress">
+            <div id="myBar">
+            </div>
+          </div>
+        </div>
       </div>
 
+      <div id="functional-buttons">
+        <div class="col-md-6 col-md-sm-12">
+          <button>
+            Categroy select
+          </button>
+        </div>
+        <div class="col-md-6 col-md-sm-12">
+          <button>
+            Next question
+          </button>
+        </div>
+      </div>
     </div> <!-- /container -->
+
+
+    <script src="/js/train.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </body>
