@@ -9,7 +9,7 @@
     <link rel="icon" href="../../favicon.ico">
     <title>Smart Learning</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/login-register.css" rel="stylesheet">
+    <link href="/css/add-question.css" rel="stylesheet">
   </head>
   <body style="background: #f1f1f1;">
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -36,41 +36,33 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-    <div class="container" style="background: #eee; padding-top: 50px;">
-      <h1>Hello my friend! 🚀 </h1>
-      <p style="text-align: center; font-size: 16px;">Log in or create a new account!</p>
+    <header>
+      <h1>Add article! 🚀</h1>
+      <p style="text-align: center; font-size: 16px;">Help us create cool database of articles with knowledge!</p>
+    </header>
+    <div class="container" style="background: #eee; padding-top: 20px;">
         <div class="main">
 
-            <div class="signin-form profile col-md-6">
-              <h3>Login</h3>
+            <div class="signin-form profile">
 
-              <div class="login-form">
-                <form action="/" method="post">
-                  <input type="text" name="logemail" placeholder="E-mail" required="">
-                  <input type="password" name="logpassword" placeholder="Password" required="">
+              <div class="add-question-form">
+                <form action="/api/add-article" method="post">
+                  <input type="text" name="article" placeholder="Article title" required="">
+                  <select>
+                    <option>Catgories</option>
+                  </select>
+                  <textarea rows="20" style="width: 80%">Describe topic.</textarea>
+                  <input type="text" name="url" placeholder="URL adress to image about this topic" required="">
+                  <input type="text" name="source" placeholder="Source of this information" required="">
                   <div class="tp">
-                    <button type="submit" value="LOGIN NOW"><span>Login now </span></button>
+                    <button type="submit" value="ADD ARTICLE"><span>Add Article</span></button>
                   </div>
                 </form>
               </div>
             </div>
-          <div class="agile">
-            <div class="signin-form profile col-md-6">
-              <h3>Register</h3>
-
-              <div class="login-form">
-                <form action="/" method="post">
-                  <input type="text" name="email" placeholder="E-mail" required="">
-                  <input type="text" name="username" placeholder="Username" required="">
-                  <input type="password" name="password" placeholder="Password" required="">
-                  <input type="password" name="passwordConf" placeholder="Confirm Password" required="">
-                  <button type="submit" value="REGISTER"><span>Register </span></button>
-                </form>
-              </div>
-              <p><a href="#"> By clicking register, I agree to your terms</a></p>
-            </div>
           </div>
-        </div>
+
+      </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </body>

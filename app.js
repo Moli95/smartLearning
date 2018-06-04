@@ -28,7 +28,7 @@ app.use(session({
 
 // parse incoming requests
 app.use(bodyParser.json());
-//app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 
 // serve static files from template
@@ -36,13 +36,12 @@ app.use(express.static(__dirname + '/public/'));
 
 // include routes
 var routes = require('./routes/router');
+var api = require('./routes/questions');
+var api2 = require('./routes/articles');
 app.use('/', routes);
+app.use('/', api);
+app.use('/', api2);
 
-
-// include api
-// var api = require('./api/questions');
-// coen
-// app.use('/api/', api);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

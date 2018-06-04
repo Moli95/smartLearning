@@ -21,8 +21,7 @@ console.log("aaaa");
 // });
 
 // include routes
-var api = require('./questions');
-var api2 = require('./articles');
+
 
 
 
@@ -148,24 +147,3 @@ router.get('/logout', function (req, res, next) {
 });
 
 module.exports = router;
-
-// module.exports = {
-//   router: function() {
-//     return router;
-//   },
-//   api: function() {
-//     return api;
-//   },
-//   api2: function() {
-//     return api2;
-//   }
-// };
-
-
-
-// exports.router = function() {
-//   return router;
-// }
-
-// exports.api = api;
-// exports.api = api2;
