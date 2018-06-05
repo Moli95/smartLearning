@@ -1,10 +1,10 @@
 var mongoose = require('mongoose');
 
 
-// var answearsSchema = new mongoose.Schema({
-//   "answear": String,
-//   "isTrue": Boolean
-// });
+var answearsSchema = new mongoose.Schema({
+  "answear": String,
+  "isTrue": Boolean
+});
 
 var questionsSchema = new mongoose.Schema({
   questionID: {
@@ -24,8 +24,13 @@ var questionsSchema = new mongoose.Schema({
   	unique: false,
   	required: true,
   	trim: true
-  }
-  // answears: [answearsSchema]
+  },
+  source: {
+    type: String,
+    unique: false,
+    required: true
+  },
+  answears: [answearsSchema, answearsSchema, answearsSchema, answearsSchema]
 })
 
 

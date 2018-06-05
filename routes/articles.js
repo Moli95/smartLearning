@@ -32,9 +32,22 @@ router.get('/api/allarticles', function (req,res) {
 
 // POST route for adding article
 router.post('/api/addarticle', function (req, res) {
-  var article = new Article(req.body);
+  Article.find({}).then(function(items){
+  var dataToSend = {
+    articleID: items.length + 1,
+    title: req.body.title,
+    category: req.body.category,
+    text: req.body.text,
+    image: req.body.image,
+    source: req.body.source,
+    tags: req.body.tags
+  };
+  console.log("UWAGA");
+  console.log(dataToSend);
+  var article = new Article(dataToSend);
   article.save();
-  res.send(req.body);
+  res.send(article);
+  });
 });
 
 router.get('/api/articlecategories', function(req, res) {
@@ -48,6 +61,11 @@ router.get('/api/articlecategories', function(req, res) {
     }
     res.send(uniqueCategories);
   });
+});
+
+
+router.get('/articles', function(req, res) {
+  return res.sendFile('articles.html', { root: __dirname + '/../public/'});
 });
 
 

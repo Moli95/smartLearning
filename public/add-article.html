@@ -46,14 +46,14 @@
             <div class="signin-form profile">
 
               <div class="add-question-form">
-                <form action="/api/add-article" method="post">
-                  <input type="text" name="article" placeholder="Article title" required="">
-                  <select>
-                    <option>Catgories</option>
+                <form action="/api/addarticle" method="post">
+                  <input type="text" name="title" placeholder="Article title" required="">
+                  <select id="categoryselect" name="category">
                   </select>
-                  <textarea rows="20" style="width: 80%">Describe topic.</textarea>
-                  <input type="text" name="url" placeholder="URL adress to image about this topic" required="">
+                  <textarea rows="20" style="width: 80%" name="text">Describe topic.</textarea>
+                  <input type="text" name="image" placeholder="URL adress to image about this topic" required="">
                   <input type="text" name="source" placeholder="Source of this information" required="">
+                  <input type="text" name="tags" placeholder="tags - spereate with space" required="">
                   <div class="tp">
                     <button type="submit" value="ADD ARTICLE"><span>Add Article</span></button>
                   </div>
@@ -63,6 +63,30 @@
           </div>
 
       </div>
+
+     <script>
+     window.onload = function(){
+     function getCategories() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+            JSON.parse(this.responseText).forEach(function(item, index) {
+              //CONSOLE.LOG(item);
+              var categoryBox = `<option value="` + item + `">` + item + `</option>`;
+              document.getElementById('categoryselect').insertAdjacentHTML('beforeend', categoryBox);
+            });
+          }
+      };
+      var urlToCall = '/api/questioncategories';
+      xhttp.open("GET", urlToCall, true);
+      xhttp.send();
+    }
+
+
+      getCategories();
+    }
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </body>

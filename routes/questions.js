@@ -27,9 +27,9 @@ router.get('/api/randomquestion', function (req, res) {
 
 
 // POST request to add question to database
-router.post('/api/addquestion', function (req, res) {
+router.post('/api/addquestion', function (req, res, next) {
   // long version
-  Questions.find(query).then(function(questions){
+  Questions.find({}).then(function(questions){
   console.log(req.body);
   var datatoSafe = {
     questionID: questions.length,
@@ -43,7 +43,7 @@ router.post('/api/addquestion', function (req, res) {
       },
       {
         isTrue: false,
-        answear: req.body.answearB
+        answear: req.body.answearA
       },
       {
         isTrue: false,
@@ -55,12 +55,14 @@ router.post('/api/addquestion', function (req, res) {
       }
     ]
   };
+  console.log(datatoSafe);
   var question = new Questions(datatoSafe);
   question.save();
   // question.create(req.body).then(function(question) {
   //   res.send(question);
   // });
-  res.send(req.body);
+  res.send(question);
+});
 });
 
 

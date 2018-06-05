@@ -30,6 +30,16 @@ var articleSchema = new mongoose.Schema({
   	unique: false,
   	required: true,
   	trim: true
+  },
+  source: {
+    type: String,
+    unique: false,
+    required: true
+  },
+  tags: {
+    type: Array,
+    uniqie: false,
+    required: true
   }
 });
 
