@@ -1,5 +1,11 @@
 var mongoose = require('mongoose');
 
+
+// var answearsSchema = new mongoose.Schema({
+//   "answear": String,
+//   "isTrue": Boolean
+// });
+
 var questionsSchema = new mongoose.Schema({
   questionID: {
     type: Number,
@@ -19,28 +25,9 @@ var questionsSchema = new mongoose.Schema({
   	required: true,
   	trim: true
   }
-  //,
-  // answears: [
-	// 	{
-	// 		"answear": String,
-	// 		"isTrue": Boolean
-	// 	}
-  //   ]
-});
-
+  // answears: [answearsSchema]
+})
 
 
 var Questions = mongoose.model('questions', questionsSchema);
 module.exports = Questions;
-
-
-
-
-// var express = require('express');
-// var router = express.Router();
-
-// console.log("bbb");
-// // GET route for reading data
-// router.get('/api/', function (req, res, next) {
-//   return "bbb";
-// });

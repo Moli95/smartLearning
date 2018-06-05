@@ -37,6 +37,18 @@ router.post('/api/addarticle', function (req, res) {
   res.send(req.body);
 });
 
+router.get('/api/articlecategories', function(req, res) {
+  Article.find({}).then(function(items){
+    console.log(items);
+    var uniqueCategories = [];
+    for(i = 0; i< items.length; i++){
+      if(uniqueCategories.indexOf(items[i].category) === -1){
+        uniqueCategories.push(items[i].category);
+      }
+    }
+    res.send(uniqueCategories);
+  });
+});
 
 
 

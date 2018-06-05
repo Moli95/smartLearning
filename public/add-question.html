@@ -46,10 +46,10 @@
             <div class="signin-form profile">
 
               <div class="add-question-form">
-                <form action="/" method="post">
+                <form action="/api/addquestion" method="post">
                   <input type="text" name="question" placeholder="Question text" required="">
-                  <select>
-                    <option>Catgories</option>
+                  Category:
+                  <select id="categoryselect" name="category">
                   </select>
                   <input type="text" name="answearA" placeholder="answear A - correct" required="">
                   <input type="text" name="answearB" placeholder="answear B" required="">
@@ -65,6 +65,30 @@
           </div>
 
       </div>
+
+      <script>
+      window.onload = function(){
+      function getCategories() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              console.log(this.responseText);
+              JSON.parse(this.responseText).forEach(function(item, index) {
+                //CONSOLE.LOG(item);
+                var categoryBox = `<option value="` + item + `">` + item + `</option>`;
+                document.getElementById('categoryselect').insertAdjacentHTML('beforeend', categoryBox);
+              });
+            }
+        };
+        var urlToCall = '/api/questioncategories';
+        xhttp.open("GET", urlToCall, true);
+        xhttp.send();
+      }
+
+
+        getCategories();
+      }
+      </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </body>

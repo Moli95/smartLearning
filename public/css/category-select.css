@@ -14,6 +14,8 @@
 
 .single-category h3 {
 	text-align: left;
+	display: inline-block;
+	float: left;
 }
 
 .single-category p {
@@ -40,4 +42,5 @@ header p {
 
 .start {
 	text-align: center;
+	margin-top: 5px;
 }

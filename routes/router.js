@@ -93,6 +93,7 @@ router.post('/', function (req, res, next) {
       username: req.body.username,
       password: req.body.password,
       passwordConf: req.body.passwordConf,
+      results: [1,0]
     }
 
     User.create(userData, function (error, user) {
@@ -136,7 +137,8 @@ router.get('/profile', function (req, res, next) {
           err.status = 400;
           return next(err);
         } else {
-          return res.send('<h1>Name: </h1>' + user.username + '<h2>Mail: </h2>' + user.email + '<br><a type="button" href="/logout">Logout</a>')
+          return res.sendFile('profile.html', { root: __dirname + '/../public/'});
+          //return res.send('<h1>Name: </h1>' + user.username + '<h2>Mail: </h2>' + user.results + '<br><a type="button" href="/logout">Logout</a>')
         }
       }
     });
