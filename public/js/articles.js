@@ -5,7 +5,7 @@ function prepareData() {
           JSON.parse(this.responseText).forEach(function(item, index) {
             var tagshtml = "";
             for(var i = 0; i<item.tags.length; i++) {
-              tagshtml += `<a href="/api/categorychange?` + item.tags[i] + `">` + item.tags[i] + `</a>`;
+              tagshtml += `<a href="/articles?tags=` + item.tags[i] + `">` + item.tags[i] + `</a>`;
             }
           console.log(item.tags);
           var shortDescription = item.text.split(" ").slice(0,50).join(" ");
@@ -37,6 +37,9 @@ function prepareData() {
     }
     if(currentUrl.searchParams.get("title") && currentUrl.searchParams.get("title").length>0) {
       urlToCall = urlToCall + '&title=' + currentUrl.searchParams.get("title");
+    }
+    if(currentUrl.searchParams.get("tags") && currentUrl.searchParams.get("tags").length>0) {
+      urlToCall = urlToCall + '?tags=' + currentUrl.searchParams.get("tags");
     }
 
     console.log(urlToCall);
