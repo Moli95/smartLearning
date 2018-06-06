@@ -13,7 +13,7 @@ function prepareQuestion() {
                     checkAnswear(answear.answear);
                 }
             });
-            var hrefToQuestion = '/quiz?category=' + answear.category;
+            var hrefToQuestion = window.location.href;
             document.getElementById('nextQuestion').href=hrefToQuestion;
         }
     };
@@ -28,9 +28,10 @@ function checkAnswear(goodAnswear) {
     for (var i = 0; i < classname.length; i++) {
         classname[i].addEventListener('click', function(event) {
             if(event.target.innerHTML == goodAnswear) {
-
+                sendResult(1);
                 alert("great!");
             } else {
+                sendResult(0);
                 alert("bad answear!");
                 event.target.style.background = 'red';
             }
@@ -42,23 +43,14 @@ function checkAnswear(goodAnswear) {
 
 function sendResult(result) {
   var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-          document.getElementById("question-text").innerHTML = JSON.parse(this.responseText).questionText;
-          JSON.parse(this.responseText).answears.forEach(function(answear, index) {
-              document.getElementsByClassName("answear")[index].innerHTML = answear.answear;
-              if(answear.isTrue == true) {
-                  checkAnswear(answear.answear);
-              }
-          });
-          var hrefToQuestion = '/quiz?category=' + answear.category;
-          document.getElementById('nextQuestion').href=hrefToQuestion;
-      }
-  };
-  var urlToCall = '/api/randomquestion?category=' + category;
-  xhttp.open("GET", urlToCall, true);
-  xhttp.send();
-  req.session.userId)
+  var score ={};
+  xhttp.onload = function () {
+    score.score = this.result;
+  }
+  var urlToCall = '/api/submitanswear/';
+  xhttp.open("put", urlToCall, true);
+  xhttp.send(score);
+
 }
 
 

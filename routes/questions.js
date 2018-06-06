@@ -68,23 +68,42 @@ router.post('/api/addquestion', function (req, res, next) {
 
 // POST question to submit result of answerar in QUIZ
 
-router.put('/api/submitanswear/:id', function(req, res) {
-  User.findOne({_id: req.params.id}).then(function(user) {
-    var toUpdate = {
-      goodscores: user.goodscores,
-      allscores: user.allscores
-    };
-    if(req.body.score == 1) {
-      toUpdate.goodscores++;
+router.put('/api/submitanswear/', function(req, res) {
+  User.findById(req.session.userId)
+  .exec(function (error, user) {
+    console.log(req.session.userId);
+    console.log(req.session);
+    if (error) {
+      return next(error);
+    } else {
+      if (user === null) {
+        var err = new Error('Not authorized! Go back!');
+        err.status = 400;
+        return next(err);
+      } else {
+        User.findOne({_id: req.session.userId}).then(function(user) {
+          var toUpdate = {
+            goodscores: user.goodscores,
+            allscores: user.allscores
+          };
+          if(req.body.score == 1) {
+            toUpdate.goodscores++;
+          }
+          toUpdate.allscores++;
+          User.findByIdAndUpdate({_id: req.session.userId}, toUpdate).then(function() {
+            User.findOne({_id: req.session.userId}).then(function(user) {
+              res.send(toUpdate);
+            });
+          }); 
+        });
+      }
     }
-    toUpdate.allscores++;
-    User.findByIdAndUpdate({_id: req.params.id}, toUpdate).then(function() {
-      User.findOne({_id: req.params.id}).then(function(user) {
-        res.send(user);
-    });
   });
-  
-});
+
+
+
+
+
 });
 
 

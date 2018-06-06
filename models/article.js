@@ -36,11 +36,12 @@ var articleSchema = new mongoose.Schema({
     unique: false,
     required: true
   },
-  tags: {
-    type: Array,
-    uniqie: false,
-    required: true
-  }
+  tags: [String]
+  // tags: {
+  //   type: Array,
+  //   uniqie: false,
+  //   required: true
+  // }
 });
 
 

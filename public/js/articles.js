@@ -3,7 +3,13 @@ function prepareData() {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
           JSON.parse(this.responseText).forEach(function(item, index) {
+            var tagshtml = "";
+            for(var i = 0; i<item.tags.length; i++) {
+              tagshtml += `<a href="/api/categorychange?` + item.tags[i] + `">` + item.tags[i] + `</a>`;
+            }
+          console.log(item.tags);
           var shortDescription = item.text.split(" ").slice(0,50).join(" ");
+
           var articleBox = `
                 <div class="single-card">
         <img src="` + item.image + `" width='100%' style='max-height: 400px;'/>
@@ -13,9 +19,9 @@ function prepareData() {
         <p>` + shortDescription + `
         </p>
         <div class="bottom-of-card">
-        <div class="tags-container">
-          <a href="/name/">Pierwszy tag</a>
-        </div>
+        <div class="tags-container">` +
+          tagshtml +
+        `</div>
         <a class="btn btn-lg btn-primary read-more" href="/article?id=` + item.articleID +`" role="button">Read More! &raquo;</a>
       </div>
       </div>

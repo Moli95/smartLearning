@@ -34,6 +34,11 @@ router.get('/api/allarticles', function (req, res) {
   if(req.query.title) {
     query.title = req.query.title;
   }
+  if(req.query.tags) {
+    console.log("są tagi");
+    query.tags = req.query.tags;
+  }
+  console.log(query);
   Article.find(query).then(function(items) {
     res.send(items);
   });
@@ -56,7 +61,7 @@ router.post('/api/addarticle', function (req, res) {
     text: req.body.text,
     image: req.body.image,
     source: req.body.source,
-    tags: req.body.tags
+    tags: req.body.tags.split(" ")
   };
   console.log("UWAGA");
   console.log(dataToSend);
