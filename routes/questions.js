@@ -32,7 +32,7 @@ router.post('/api/addquestion', function (req, res, next) {
   Questions.find({}).then(function(questions){
   console.log(req.body);
   var datatoSafe = {
-    questionID: questions.length,
+    questionID: questions.length + 1,
     questionText: req.body.question,
     category: req.body.category,
     source: req.body.source,

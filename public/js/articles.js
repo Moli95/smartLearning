@@ -3,13 +3,14 @@ function prepareData() {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
           JSON.parse(this.responseText).forEach(function(item, index) {
+          var shortDescription = item.text.split(" ").slice(0,50).join(" ");
           var articleBox = `
                 <div class="single-card">
-        <img src="` + item.image + `"/>
+        <img src="` + item.image + `" width='100%' style='max-height: 400px;'/>
         <h3>
           ` + item.title + `
         </h3>
-        <p>` + item.text + `
+        <p>` + shortDescription + `
         </p>
         <div class="bottom-of-card">
         <div class="tags-container">
@@ -23,7 +24,16 @@ function prepareData() {
         });
         }
     };
-    var urlToCall = '/api/allarticles';
+    var currentUrl = new URL(window.location.href);
+    var urlToCall = 'api/allarticles';
+    if(currentUrl.searchParams.get("category")) {
+      urlToCall = urlToCall + '?category=' + currentUrl.searchParams.get("category");
+    }
+    if(currentUrl.searchParams.get("title") && currentUrl.searchParams.get("title").length>0) {
+      urlToCall = urlToCall + '&title=' + currentUrl.searchParams.get("title");
+    }
+
+    console.log(urlToCall);
     xhttp.open("GET", urlToCall, true);
     xhttp.send();
 }
@@ -46,10 +56,11 @@ function getCategories() {
     }
 
 
-      
+
 
 
 window.onload = function(){
   prepareData();
   getCategories();
+
 };

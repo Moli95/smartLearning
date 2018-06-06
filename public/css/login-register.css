@@ -131,6 +131,12 @@ CARDS
     /*height: 50px;*/
 }
 
+.cards-filter form {
+		display: flex;
+		justify-content: space-around;
+		width: 100%;
+}
+
 .cards-filter input, .cards-filter button{
 	margin: 0 5px;
 }
@@ -170,6 +176,7 @@ CARDS
 .bottom-of-card {
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 }
 
 .cards-bottom-pagination {

@@ -23,10 +23,26 @@ router.get('/api/randomarticle', function (req, res) {
 });
 
 // GET route to get all articles
-router.get('/api/allarticles', function (req,res) {
-  Article.find({}).then(function(articles) {
-    res.send(articles);
+router.get('/api/allarticles', function (req, res) {
+  var name = req.query.category;
+  var value = req.query.value;
+  var query = {};
+  console.log(req.query);
+  if(req.query.category) {
+    query.category = name;
+  }
+  if(req.query.title) {
+    query.title = req.query.title;
+  }
+  Article.find(query).then(function(items) {
+    res.send(items);
   });
+});
+
+//POST route for category Search
+router.post('/api/categorychange', function(req, res) {
+  var url = '/articles?category=' + req.body.category + '&title=' + req.body.search;
+  res.redirect(url);
 });
 
 
@@ -64,7 +80,7 @@ router.get('/api/articlecategories', function(req, res) {
 });
 
 
-router.get('/articles', function(req, res) {
+router.get('/articles/', function(req, res) {
   return res.sendFile('articles.html', { root: __dirname + '/../public/'});
 });
 

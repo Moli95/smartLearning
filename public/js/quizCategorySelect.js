@@ -8,7 +8,7 @@ function prepareData() {
                     item +
                   `</h3>
                   <div class="bottom-of-category">
-                  <a class="btn btn-lg btn-primary start" href="/train?category=` + item + `"role="button">Start &raquo;</a>
+                  <a class="btn btn-lg btn-primary start" href="/quiz?category=` + item + `"role="button">Start &raquo;</a>
                 </div>
                 </div>`;
           document.getElementById('allQuestionCategories').insertAdjacentHTML('beforeend', categoryBox);
@@ -24,4 +24,5 @@ function prepareData() {
 
 window.onload = function(){
   prepareData();
+
 };

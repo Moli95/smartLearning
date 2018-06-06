@@ -60,8 +60,16 @@ router.get('/train-category-select', function (req, res, next) {
   return res.sendFile('category-select.html', { root: __dirname + '/../public/'});
 });
 
+router.get('/quiz-category-select', function (req, res, next) {
+  return res.sendFile('category-select-quiz.html', { root: __dirname + '/../public/'});
+});
+
 router.get('/train', function (req, res, next) {
   return res.sendFile('question.html', { root: __dirname + '/../public/'});
+});
+
+router.get('/quiz', function (req, res, next) {
+  return res.sendFile('quiz.html', { root: __dirname + '/../public/'});
 });
 
 router.get('/login', function (req, res) {
@@ -75,6 +83,8 @@ router.get('/cards', function (req, res) {
 
 //POST route for updating data
 router.post('/', function (req, res, next) {
+  // console.log("JAZDA");
+  // console.log(req.session.userId);
   // confirm that user typed same password twice
   if (req.body.password !== req.body.passwordConf) {
     var err = new Error('Passwords do not match.');
