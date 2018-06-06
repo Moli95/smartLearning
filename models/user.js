@@ -1,6 +1,25 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 
+
+var resultsSchema = new mongoose.Schema({
+  category: {
+    type: String
+  },
+  history: {
+    type: Array,
+    default: [0,0,0]
+  },
+  good: {
+    type: Number,
+    default: 0
+  },
+  all: {
+    type: Number,
+    default: 0
+  }
+});
+
 var UserSchema = new mongoose.Schema({
   email: {
     type: String,
@@ -16,15 +35,36 @@ var UserSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true,
+    required: true
   },
   passwordConf: {
     type: String,
-    required: true,
+    required: true
   },
-  results: {
+  // scores: [{
+  //   category: String,
+  //   historyscore: {
+  //     type: Array,
+  //     default: [1,1,1],
+  //     required: true
+  //   },
+  //   goodanswears: Number,
+  //   allanswears: Number
+  // }]
+  scores: {
     type: Array,
-    required: false
+    required: false,
+    default: []
+  },
+  goodscores: {
+    type: Number,
+    required: false,
+    default: 0
+  },
+  allscores: {
+    type: Number,
+    required: false,
+    default: 0
   }
 });
 

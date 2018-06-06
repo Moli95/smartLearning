@@ -68,9 +68,26 @@ router.post('/api/addquestion', function (req, res, next) {
 
 // POST question to submit result of answerar in QUIZ
 
-router.post('/api/submitanswear', function(req, res) {
-
+router.put('/api/submitanswear/:id', function(req, res) {
+  User.findOne({_id: req.params.id}).then(function(user) {
+    var toUpdate = {
+      goodscores: user.goodscores,
+      allscores: user.allscores
+    };
+    if(req.body.score == 1) {
+      toUpdate.goodscores++;
+    }
+    toUpdate.allscores++;
+    User.findByIdAndUpdate({_id: req.params.id}, toUpdate).then(function() {
+      User.findOne({_id: req.params.id}).then(function(user) {
+        res.send(user);
+    });
+  });
+  
 });
+});
+
+
 
 router.get('/api/questioncategories', function(req, res) {
   Questions.find({}).then(function(items){

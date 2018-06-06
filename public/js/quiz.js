@@ -58,6 +58,7 @@ function sendResult(result) {
   var urlToCall = '/api/randomquestion?category=' + category;
   xhttp.open("GET", urlToCall, true);
   xhttp.send();
+  req.session.userId)
 }
 
 
