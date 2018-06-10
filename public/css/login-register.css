@@ -294,3 +294,50 @@ CARDS
 #functional-buttons button:hover {
 	background: #FF2919;
 }
+
+#statistics button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #4CAF50;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 18px;
+  padding: 5px 0;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 0;
+  vertical-align: middle;
+}
+
+#statistics button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+#statistics button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+#statistics button:hover span {
+  padding-right: 25px;
+}
+
+#statistics button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+#statistics p {
+	font-size: 30px;
+	text-align: center;
+	font-family: 'Raleway', sans-serif;
+}

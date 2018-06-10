@@ -137,8 +137,24 @@ router.post('/', function (req, res, next) {
 router.get('/profile', function (req, res, next) {
   User.findById(req.session.userId)
     .exec(function (error, user) {
-      console.log(req.session.userId);
-      console.log(req.session);
+      if (error) {
+        return next(error);
+      } else {
+        if (user === null) {
+          var err = new Error('Not authorized! Go back!');
+          err.status = 400;
+          return res.redirect('/login');
+        } else {
+          return res.sendFile('profile.html', { root: __dirname + '/../public/'});
+          //return res.send('<h1>Name: </h1>' + user.username + '<h2>Mail: </h2>' + user.results + '<br><a type="button" href="/logout">Logout</a>')
+        }
+      }
+    });
+});
+
+router.get('/api/userscores', function (req, res, next) {
+  User.findById(req.session.userId)
+    .exec(function (error, user) {
       if (error) {
         return next(error);
       } else {
@@ -147,12 +163,15 @@ router.get('/profile', function (req, res, next) {
           err.status = 400;
           return next(err);
         } else {
-          return res.sendFile('profile.html', { root: __dirname + '/../public/'});
-          //return res.send('<h1>Name: </h1>' + user.username + '<h2>Mail: </h2>' + user.results + '<br><a type="button" href="/logout">Logout</a>')
+          var response = {
+            good: user.goodscores,
+            all: user.allscores
+          };
+          return res.send(response);
         }
       }
     });
-});
+  });
 
 // GET for logout logout
 router.get('/logout', function (req, res, next) {

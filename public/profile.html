@@ -39,12 +39,43 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-    <div class="container" style="background: #eee; padding-top: 50px;">
+    <header style="background: #f44336;"">
       <h1>Hello my friend! 🚀 </h1>
       <p style="text-align: center; font-size: 16px;">Ready for the next chalange?!</p>
+    </header>
+    <div class="container" style="background: #eee; padding-top: 50px;">
         <div class="main">
-
+          <div id="statistics">
+            <p>You have correctly answered <span id="good"></span>/<span id="all"></span> questions!</p>
+            <p>You have two options now:</p>
+            <div style="display: flex; justify-content: space-around; padding: 20px 0 20px 0;">
+            <a href="/train-category-select">
+              <button>
+                Train
+              </button>
+            </a>
+            <p>
+              OR
+            </p>
+            <a href="/quiz-category-select">
+              <button>
+                Quiz
+              </button>
+            </a>
+            </div>
+            <p>
+              Chose wisely!
+            </p>
+          
+          <a href="/logout" style="display: inherit; text-align: center;">
+            <button>
+              Log Out
+            </button>
+          </a>
         </div>
+        </div>
+
+    <script src="/js/scores.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </body>

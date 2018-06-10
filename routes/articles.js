@@ -38,6 +38,11 @@ router.get('/api/allarticles', function (req, res) {
     console.log("są tagi");
     query.tags = req.query.tags;
   }
+  if(req.query.id) {
+    console.log("są tagi");
+    query.articleID = req.query.id;
+  }
+
   console.log(query);
   Article.find(query).then(function(items) {
     res.send(items);
@@ -89,6 +94,9 @@ router.get('/articles/', function(req, res) {
   return res.sendFile('articles.html', { root: __dirname + '/../public/'});
 });
 
+router.get('/article/', function(req, res) {
+  return res.sendFile('article.html', { root: __dirname + '/../public/'});
+});
 
 
 
