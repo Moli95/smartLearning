@@ -30,8 +30,19 @@ var questionsSchema = new mongoose.Schema({
     unique: false,
     required: true
   },
+  tip: {
+    type: String,
+    unique: false,
+    required: true,
+  },
+  approved: {
+    type: String,
+    unique: false,
+    required: true,
+    default: "waiting"
+  },
   answears: [answearsSchema, answearsSchema, answearsSchema, answearsSchema]
-})
+});
 
 
 var Questions = mongoose.model('questions', questionsSchema);

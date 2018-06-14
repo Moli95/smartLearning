@@ -7,19 +7,40 @@ function prepareQuestion() {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("question-text").innerHTML = JSON.parse(this.responseText).questionText;
-            JSON.parse(this.responseText).answears.forEach(function(answear, index) {
+            document.getElementById("tip").innerHTML = JSON.parse(this.responseText).tip;
+            var randomOrder = shuffle(JSON.parse(this.responseText).answears);
+            randomOrder.forEach(function(answear, index) {
                 document.getElementsByClassName("answear")[index].innerHTML = answear.answear;
                 if(answear.isTrue == true) {
                     checkAnswear(answear.answear);
                 }
             });
-            var hrefToQuestion = '/train?category=' + answear.category;
+            var hrefToQuestion = '/train?category=' + JSON.parse(this.responseText).category;
             document.getElementById('nextQuestion').href=hrefToQuestion;
         }
     };
     var urlToCall = '/api/randomquestion?category=' + category;
     xhttp.open("GET", urlToCall, true);
     xhttp.send();
+}
+
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
 }
 
 function checkAnswear(goodAnswear) {
@@ -41,33 +62,10 @@ function checkAnswear(goodAnswear) {
 }
 
 
-function move() {
-    var elem = document.getElementById("myBar");
-    var width = 100;
-    var id = setInterval(frame, 100);
-    var classname = document.getElementsByClassName("answear");
-    function frame() {
-        if (width <= 0) {
-            clearInterval(id);
-            alert("To late for answear");
-            // run function that will show good answear;
-            for (var i = 0; i < classname.length; i++) {
-                classname[i].style.pointerEvents= 'none';
-            };
-        } else {
-            width--;
-            elem.style.width = width + '%';
-        }
-    }
-
-
-    for (var i = 0; i < classname.length; i++) {
-        classname[i].addEventListener('click', function(event) {
-            clearInterval(id);
-        });
-    };
-
+function showTip() {
+    document.getElementById('tip').style.display="block";
 }
+
 
 function showCorrectAnswear(correct, ) {
     console.log(correct);
@@ -82,6 +80,11 @@ function showCorrectAnswear(correct, ) {
 }
 
 window.onload = function(){
-  move();
   prepareQuestion();
+
+
+  document.getElementById('showTip').addEventListener('click', function() {
+    showTip();
+  });
+
 };

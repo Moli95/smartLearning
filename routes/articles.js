@@ -72,7 +72,7 @@ router.post('/api/addarticle', function (req, res) {
   console.log(dataToSend);
   var article = new Article(dataToSend);
   article.save();
-  res.send(article);
+  res.redirect('/thank-you');
   });
 });
 
@@ -91,7 +91,18 @@ router.get('/api/articlecategories', function(req, res) {
 
 
 router.get('/articles/', function(req, res) {
-  return res.sendFile('articles.html', { root: __dirname + '/../public/'});
+  User.findById(req.session.userId)
+    .exec(function (error, user) {
+      if (error) {
+        return res.sendFile('no-permission.html', { root: __dirname + '/../public/'});
+      } else {
+        if (user === null) {
+          return res.sendFile('no-permission.html', { root: __dirname + '/../public/'});
+        } else {
+          return res.sendFile('articles.html', { root: __dirname + '/../public/'});
+        }
+      }
+    });
 });
 
 router.get('/article/', function(req, res) {

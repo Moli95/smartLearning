@@ -2,29 +2,6 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
 var Questions = require('../models/questions');
-// var express = require('express');
-// var router = express.Router();
-
-// console.log("bbb");
-// // GET route for reading data
-// router.get('/api/', function (req, res, next) {
-//   return "bbb";
-// });
-console.log("aaaa");
-
-
-// router.get('/api/randomquestion', function (req, res) {
-//   Questions.find({}).then(function(questions){
-//     var rnd = Math.floor(Math.random() * questions.length) + 0;
-//     res.send(questions[rnd]);
-//   });
-// });
-
-// include routes
-
-
-
-
 
 
 //POST route for updating questions
@@ -56,6 +33,14 @@ router.get('/', function (req, res, next) {
   return res.sendFile('index.html', { root: __dirname + '/../public/'});
 });
 
+router.get('/add-question', function (req, res, next) {
+  return res.sendFile('add-question.html', { root: __dirname + '/../public/'});
+});
+
+router.get('/add-article', function (req, res, next) {
+  return res.sendFile('add-article.html', { root: __dirname + '/../public/'});
+});
+
 router.get('/train-category-select', function (req, res, next) {
   return res.sendFile('category-select.html', { root: __dirname + '/../public/'});
 });
@@ -65,11 +50,34 @@ router.get('/quiz-category-select', function (req, res, next) {
 });
 
 router.get('/train', function (req, res, next) {
-  return res.sendFile('question.html', { root: __dirname + '/../public/'});
+  User.findById(req.session.userId)
+    .exec(function (error, user) {
+      if (error) {
+        return res.sendFile('no-permission.html', { root: __dirname + '/../public/'});
+      } else {
+        if (user === null) {
+          return res.sendFile('no-permission.html', { root: __dirname + '/../public/'});
+        } else {
+          return res.sendFile('question.html', { root: __dirname + '/../public/'});
+        }
+      }
+    });
+  
 });
 
 router.get('/quiz', function (req, res, next) {
-  return res.sendFile('quiz.html', { root: __dirname + '/../public/'});
+  User.findById(req.session.userId)
+    .exec(function (error, user) {
+      if (error) {
+        return res.sendFile('no-permission.html', { root: __dirname + '/../public/'});
+      } else {
+        if (user === null) {
+          return res.sendFile('no-permission.html', { root: __dirname + '/../public/'});
+        } else {
+          return res.sendFile('quiz.html', { root: __dirname + '/../public/'});
+        }
+      }
+    });
 });
 
 router.get('/login', function (req, res) {
@@ -79,6 +87,11 @@ router.get('/login', function (req, res) {
 router.get('/cards', function (req, res) {
   return res.sendFile('cards.html', { root: __dirname + '/../public/'});
 });
+
+router.get('/thank-you', function (req, res) {
+  return res.sendFile('thank-you.html', { root: __dirname + '/../public/'});
+});
+
 
 
 //POST route for updating data

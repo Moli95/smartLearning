@@ -37,11 +37,6 @@ var articleSchema = new mongoose.Schema({
     required: true
   },
   tags: [String]
-  // tags: {
-  //   type: Array,
-  //   uniqie: false,
-  //   required: true
-  // }
 });
 
 

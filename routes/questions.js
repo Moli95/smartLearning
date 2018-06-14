@@ -36,6 +36,7 @@ router.post('/api/addquestion', function (req, res, next) {
     questionText: req.body.question,
     category: req.body.category,
     source: req.body.source,
+    tip: req.body.tip,
     answears: [
       {
         isTrue: true,
@@ -61,7 +62,7 @@ router.post('/api/addquestion', function (req, res, next) {
   // question.create(req.body).then(function(question) {
   //   res.send(question);
   // });
-  res.send(question);
+  return res.redirect('/thank-you');
 });
 });
 

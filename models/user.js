@@ -41,16 +41,6 @@ var UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  // scores: [{
-  //   category: String,
-  //   historyscore: {
-  //     type: Array,
-  //     default: [1,1,1],
-  //     required: true
-  //   },
-  //   goodanswears: Number,
-  //   allanswears: Number
-  // }]
   scores: {
     type: Array,
     required: false,

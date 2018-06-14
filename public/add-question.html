@@ -30,11 +30,9 @@
             <li><a href="/articles">Articles</a></li>
             <li><a href="/train-category-select">Training</a></li>
             <li><a href="/quiz-category-select">Quiz</a></li>
-            <li><a href="/chat">Chat</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/profile">My account</a></li>
-            <li><a href="/logout">Log Out</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -58,6 +56,7 @@
                   <input type="text" name="answearB" placeholder="answear B" required="">
                   <input type="text" name="answearC" placeholder="answear C" required="">
                   <input type="text" name="answearD" placeholder="answear D" required="">
+                  <input type="text" name="tip" placeholder="Tip for users" required="">
                   <input type="text" name="source" placeholder="Source of this information" required="">
                   <div class="tp">
                     <button type="submit" value="LOGIN NOW"><span>Add Question</span></button>
@@ -87,7 +86,6 @@
         xhttp.open("GET", urlToCall, true);
         xhttp.send();
       }
-
 
         getCategories();
       }
