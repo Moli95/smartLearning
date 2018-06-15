@@ -7,7 +7,6 @@ function prepareData() {
             for(var i = 0; i<item.tags.length; i++) {
               tagshtml += `<a href="/articles?tags=` + item.tags[i] + `">` + item.tags[i] + `</a>`;
             }
-          console.log(item.tags);
           var articleBox = `
                 <div class="single-card">
         <img src="` + item.image + `" width='100%' style='max-height: 400px;'/>
@@ -33,7 +32,6 @@ function prepareData() {
       urlToCall = urlToCall + '?id=' + currentUrl.searchParams.get("id");
     }
 
-    console.log(urlToCall);
     xhttp.open("GET", urlToCall, true);
     xhttp.send();
 }

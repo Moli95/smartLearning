@@ -7,7 +7,6 @@ function prepareData() {
             for(var i = 0; i<item.tags.length; i++) {
               tagshtml += `<a href="/articles?tags=` + item.tags[i] + `">` + item.tags[i] + `</a>`;
             }
-          console.log(item.tags);
           var shortDescription = item.text.split(" ").slice(0,50).join(" ");
 
           var articleBox = `
@@ -42,7 +41,6 @@ function prepareData() {
       urlToCall = urlToCall + '?tags=' + currentUrl.searchParams.get("tags");
     }
 
-    console.log(urlToCall);
     xhttp.open("GET", urlToCall, true);
     xhttp.send();
 }
@@ -51,9 +49,7 @@ function getCategories() {
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
             JSON.parse(this.responseText).forEach(function(item, index) {
-              //CONSOLE.LOG(item);
               var categoryBox = `<option value="` + item + `">` + item + `</option>`;
               document.getElementById('categoryselect').insertAdjacentHTML('beforeend', categoryBox);
             });

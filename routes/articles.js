@@ -27,7 +27,6 @@ router.get('/api/allarticles', function (req, res) {
   var name = req.query.category;
   var value = req.query.value;
   var query = {};
-  console.log(req.query);
   if(req.query.category) {
     query.category = name;
   }
@@ -35,15 +34,12 @@ router.get('/api/allarticles', function (req, res) {
     query.title = req.query.title;
   }
   if(req.query.tags) {
-    console.log("są tagi");
     query.tags = req.query.tags;
   }
   if(req.query.id) {
-    console.log("są tagi");
     query.articleID = req.query.id;
   }
 
-  console.log(query);
   Article.find(query).then(function(items) {
     res.send(items);
   });
@@ -68,8 +64,6 @@ router.post('/api/addarticle', function (req, res) {
     source: req.body.source,
     tags: req.body.tags.split(" ")
   };
-  console.log("UWAGA");
-  console.log(dataToSend);
   var article = new Article(dataToSend);
   article.save();
   res.redirect('/thank-you');
@@ -78,7 +72,6 @@ router.post('/api/addarticle', function (req, res) {
 
 router.get('/api/articlecategories', function(req, res) {
   Article.find({}).then(function(items){
-    console.log(items);
     var uniqueCategories = [];
     for(i = 0; i< items.length; i++){
       if(uniqueCategories.indexOf(items[i].category) === -1){

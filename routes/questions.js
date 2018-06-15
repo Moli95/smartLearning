@@ -10,17 +10,14 @@ router.get('/api/randomquestion', function (req, res) {
   var name = req.query.category;
   var value = req.query.value;
   var query = {};
-  console.log(req.query);
   if(req.query.category) {
     query.category = name;
   }
-  console.log(query);
   Questions.find(query).then(function(questions){
     var rnd = Math.floor(Math.random() * questions.length) + 0;
     if(questions.length == 0) {
       res.send("No questions available!");
     }
-    console.log(questions);
     res.send(questions[rnd]);
   });
 });
@@ -30,7 +27,6 @@ router.get('/api/randomquestion', function (req, res) {
 router.post('/api/addquestion', function (req, res, next) {
   // long version
   Questions.find({}).then(function(questions){
-  console.log(req.body);
   var datatoSafe = {
     questionID: questions.length + 1,
     questionText: req.body.question,
@@ -56,7 +52,6 @@ router.post('/api/addquestion', function (req, res, next) {
       }
     ]
   };
-  console.log(datatoSafe);
   var question = new Questions(datatoSafe);
   question.save();
   // question.create(req.body).then(function(question) {
@@ -72,8 +67,6 @@ router.post('/api/addquestion', function (req, res, next) {
 router.put('/api/submitanswear/', function(req, res) {
   User.findById(req.session.userId)
   .exec(function (error, user) {
-    console.log(req.session.userId);
-    console.log(req.session);
     if (error) {
       return next(error);
     } else {
@@ -95,7 +88,7 @@ router.put('/api/submitanswear/', function(req, res) {
             User.findOne({_id: req.session.userId}).then(function(user) {
               res.send(toUpdate);
             });
-          }); 
+          });
         });
       }
     }
@@ -111,7 +104,6 @@ router.put('/api/submitanswear/', function(req, res) {
 
 router.get('/api/questioncategories', function(req, res) {
   Questions.find({}).then(function(items){
-    console.log(items);
     var uniqueCategories = [];
     for(i = 0; i< items.length; i++){
       if(uniqueCategories.indexOf(items[i].category) === -1){
