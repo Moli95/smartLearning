@@ -37,6 +37,7 @@ router.post('/api/addquestion', function (req, res, next) {
     category: req.body.category,
     source: req.body.source,
     tip: req.body.tip,
+    approved: 'waiting',
     answears: [
       {
         isTrue: true,

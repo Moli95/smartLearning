@@ -38,8 +38,7 @@ var questionsSchema = new mongoose.Schema({
   approved: {
     type: String,
     unique: false,
-    required: true,
-    default: "waiting"
+    required: false
   },
   answears: [answearsSchema, answearsSchema, answearsSchema, answearsSchema]
 });
