@@ -62,7 +62,7 @@ router.get('/train', function (req, res, next) {
         }
       }
     });
-  
+
 });
 
 router.get('/quiz', function (req, res, next) {
@@ -96,8 +96,6 @@ router.get('/thank-you', function (req, res) {
 
 //POST route for updating data
 router.post('/', function (req, res, next) {
-  // console.log("JAZDA");
-  // console.log(req.session.userId);
   // confirm that user typed same password twice
   if (req.body.password !== req.body.passwordConf) {
     var err = new Error('Passwords do not match.');
@@ -189,7 +187,6 @@ router.get('/api/userscores', function (req, res, next) {
 // GET for logout logout
 router.get('/logout', function (req, res, next) {
   if (req.session) {
-    console.log(req.session);
     // delete session object
     req.session.destroy(function (err) {
       if (err) {

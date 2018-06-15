@@ -2,7 +2,6 @@ function prepareQuestion() {
     var url_string = window.location.href;
     var url = new URL(url_string);
     var category = url.searchParams.get("category");
-    console.log(category);
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -55,7 +54,6 @@ function checkAnswear(goodAnswear) {
                 event.target.style.background = 'red';
             }
             showCorrectAnswear(goodAnswear);
-            console.log(event.target.innerHTML);
         }, false);
     }
 
@@ -68,7 +66,6 @@ function showTip() {
 
 
 function showCorrectAnswear(correct, ) {
-    console.log(correct);
     var classname = document.getElementsByClassName("answear");
 
     for (var i = 0; i < classname.length; i++) {
