@@ -65,7 +65,8 @@ router.post('/api/addquestion', function (req, res, next) {
 
 // POST question to submit result of answerar in QUIZ
 
-router.put('/api/submitanswear/', function(req, res) {
+router.post('/api/submitanswear/', function(req, res) {
+  console.log(req.body);
   User.findById(req.session.userId)
   .exec(function (error, user) {
     if (error) {
@@ -89,7 +90,7 @@ router.put('/api/submitanswear/', function(req, res) {
             User.findOne({_id: req.session.userId}).then(function(user) {
               res.send(toUpdate);
             });
-          });
+          }); 
         });
       }
     }

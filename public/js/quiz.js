@@ -61,16 +61,11 @@ function shuffle(array) {
 
 function sendResult(result) {
   var xhttp = new XMLHttpRequest();
-  var score ={};
-  xhttp.onload = function () {
-    score.score = this.result;
-  }
-  var urlToCall = '/api/submitanswear/';
-  xhttp.open("put", urlToCall, true);
-  xhttp.send(score);
-
+  var score = {"score": result};
+  xhttp.open("POST", '/api/submitanswear/', true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.send(JSON.stringify(score));
 }
-
 
 function move() {
     var elem = document.getElementById("myBar");

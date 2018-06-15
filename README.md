@@ -26,3 +26,23 @@ $ npm install
 $ npm start
 ```
   - Enjoy!
+
+# Example data!
+
+go to exampledata folder
+  ```sh
+$ cd exampledata
+```
+
+and use bellow comands to fill example data to platform:
+  ```sh
+$ mongoimport --db database --file questions.json
+$ mongoimport --db database --file users.json
+$ mongoimport --db database --file articles.json
+```
+
+# Example login data
+
+login: testuser@wp.pl
+password: testuser
+
